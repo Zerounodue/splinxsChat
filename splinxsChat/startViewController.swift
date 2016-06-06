@@ -10,12 +10,17 @@ import UIKit
 
 class startViewController: UIViewController {
     var isConnected = false
+    let localIP = "http://192.168.178.36:3000"
+    let splinxsIP = "http://147.87.116.139:3000"
     @IBOutlet weak var nicknameTextFiel: UITextField!
+    @IBOutlet weak var ipSegmentedControl: UISegmentedControl!
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
     }
+    
+    
     
     
     override func viewDidAppear(animated: Bool) {
@@ -67,7 +72,18 @@ class startViewController: UIViewController {
             }
         }
     }
-    
+    @IBAction func ipChanged(sender: AnyObject) {
+        isConnected = false
+        let socketIP = (ipSegmentedControl.selectedSegmentIndex != 0)  ?  splinxsIP : localIP
+        socketIOcontroller.sharedInstance.closeConnection()
+        socketIOcontroller.sharedInstance.setSocketIP(socketIP)
+        socketIOcontroller.sharedInstance.isConnectionEstablished{ (isConnected) -> Void in
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.isConnected = isConnected
+            })
+        }
+
+    }
     
     
     

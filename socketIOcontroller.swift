@@ -17,6 +17,11 @@ class socketIOcontroller: NSObject {
     } 
     //socketIO object 
     var socket: SocketIOClient = SocketIOClient(socketURL: NSURL(string: "http://192.168.178.36:3000")!)
+    //var socket: SocketIOClient = SocketIOClient(socketURL: NSURL(string: "http://147.87.116.139:3000")!)
+    
+    func setSocketIP(ip:String){
+        socket = SocketIOClient(socketURL: NSURL(string: ip)!)
+    }
      
     //connect to the server
     func establishConnection() {

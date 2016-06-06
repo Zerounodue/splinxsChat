@@ -36,7 +36,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eE9-Aa-YHk">
-                                <rect key="frame" x="147" y="213" width="307" height="141"/>
+                                <rect key="frame" x="147" y="211" width="307" height="178"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BKD-F8-9VU">
                                         <rect key="frame" x="20" y="55" width="84" height="30"/>
@@ -56,7 +56,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ffj-9K-i57">
-                                        <rect key="frame" x="20" y="103" width="267" height="30"/>
+                                        <rect key="frame" x="20" y="135" width="267" height="30"/>
                                         <color key="backgroundColor" red="0.14509803921568626" green="0.52156862745098043" blue="0.76862745098039209" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="267" id="WHj-qW-bxv"/>
@@ -75,33 +75,58 @@
                                             <segue destination="fYI-Ra-Omw" kind="show" identifier="goToUsers" id="QyZ-Q1-WY3"/>
                                         </connections>
                                     </button>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="jg1-hT-i9K">
+                                        <rect key="frame" x="112" y="93" width="175" height="29"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="175" id="kpn-jO-dgD"/>
+                                        </constraints>
+                                        <segments>
+                                            <segment title="Local"/>
+                                            <segment title="Splinxs"/>
+                                        </segments>
+                                        <connections>
+                                            <action selector="ipChanged:" destination="D5t-O2-SIT" eventType="valueChanged" id="B1q-KC-Q4V"/>
+                                        </connections>
+                                    </segmentedControl>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Server:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KrB-Wc-BAi">
+                                        <rect key="frame" x="20" y="96" width="84" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="BKD-F8-9VU" firstAttribute="centerY" secondItem="eE9-Aa-YHk" secondAttribute="centerY" id="1DI-rw-hIl"/>
-                                    <constraint firstItem="uj3-1F-3k3" firstAttribute="centerY" secondItem="eE9-Aa-YHk" secondAttribute="centerY" id="1GG-NC-ya7"/>
+                                    <constraint firstAttribute="trailing" secondItem="jg1-hT-i9K" secondAttribute="trailing" constant="20" id="0c7-3m-2Yc"/>
+                                    <constraint firstItem="BKD-F8-9VU" firstAttribute="centerY" secondItem="eE9-Aa-YHk" secondAttribute="centerY" constant="-19" id="1DI-rw-hIl"/>
+                                    <constraint firstItem="uj3-1F-3k3" firstAttribute="centerY" secondItem="eE9-Aa-YHk" secondAttribute="centerY" constant="-19" id="1GG-NC-ya7"/>
+                                    <constraint firstItem="jg1-hT-i9K" firstAttribute="top" secondItem="uj3-1F-3k3" secondAttribute="bottom" constant="8" id="4NJ-6d-adm"/>
+                                    <constraint firstItem="jg1-hT-i9K" firstAttribute="leading" secondItem="KrB-Wc-BAi" secondAttribute="trailing" constant="8" id="4sk-j6-oaz"/>
                                     <constraint firstAttribute="trailing" secondItem="uj3-1F-3k3" secondAttribute="trailing" constant="20" id="7IT-1d-rmV"/>
                                     <constraint firstItem="xNa-A8-XNg" firstAttribute="centerX" secondItem="eE9-Aa-YHk" secondAttribute="centerX" id="DDj-Qu-I5M"/>
-                                    <constraint firstAttribute="bottom" secondItem="Ffj-9K-i57" secondAttribute="bottom" constant="8" id="FLu-e3-fqr"/>
+                                    <constraint firstAttribute="bottom" secondItem="Ffj-9K-i57" secondAttribute="bottom" constant="13" id="FLu-e3-fqr"/>
                                     <constraint firstItem="BKD-F8-9VU" firstAttribute="leading" secondItem="eE9-Aa-YHk" secondAttribute="leading" constant="20" id="GJf-5T-rQE"/>
                                     <constraint firstItem="uj3-1F-3k3" firstAttribute="leading" secondItem="BKD-F8-9VU" secondAttribute="trailing" constant="8" id="MUO-jh-HlZ"/>
                                     <constraint firstAttribute="width" constant="307" id="N93-gd-ZUa"/>
                                     <constraint firstItem="BKD-F8-9VU" firstAttribute="top" secondItem="uj3-1F-3k3" secondAttribute="top" id="Nd9-p5-ihM"/>
-                                    <constraint firstAttribute="height" constant="141" id="eJt-ce-Xe7"/>
-                                    <constraint firstAttribute="bottom" secondItem="Ffj-9K-i57" secondAttribute="bottom" constant="8" id="idQ-IW-HQc"/>
+                                    <constraint firstItem="KrB-Wc-BAi" firstAttribute="leading" secondItem="eE9-Aa-YHk" secondAttribute="leading" constant="20" id="dCP-u3-zeo"/>
+                                    <constraint firstAttribute="height" constant="178" id="eJt-ce-Xe7"/>
+                                    <constraint firstAttribute="bottom" secondItem="Ffj-9K-i57" secondAttribute="bottom" constant="13" id="idQ-IW-HQc"/>
                                     <constraint firstItem="xNa-A8-XNg" firstAttribute="top" secondItem="eE9-Aa-YHk" secondAttribute="top" constant="8" id="oAe-Iz-PFz"/>
                                     <constraint firstItem="Ffj-9K-i57" firstAttribute="centerX" secondItem="eE9-Aa-YHk" secondAttribute="centerX" id="xlJ-I8-3xg"/>
+                                    <constraint firstItem="KrB-Wc-BAi" firstAttribute="top" secondItem="BKD-F8-9VU" secondAttribute="bottom" constant="11" id="y0p-ci-8xb"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="eE9-Aa-YHk" firstAttribute="centerY" secondItem="jwN-3P-Pnm" secondAttribute="centerY" constant="-16.5" id="4z3-5e-9VD"/>
+                            <constraint firstItem="eE9-Aa-YHk" firstAttribute="centerY" secondItem="jwN-3P-Pnm" secondAttribute="centerY" id="4z3-5e-9VD"/>
                             <constraint firstItem="eE9-Aa-YHk" firstAttribute="centerX" secondItem="jwN-3P-Pnm" secondAttribute="centerX" id="mz5-g4-KRG"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Splinxs Chat" id="k7s-2V-9VA"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="ipSegmentedControl" destination="jg1-hT-i9K" id="1M0-J4-vJE"/>
                         <outlet property="nicknameTextFiel" destination="uj3-1F-3k3" id="Cyn-RK-dZW"/>
                     </connections>
                 </viewController>
