@@ -17,8 +17,8 @@ class ChatCell: BaseCell {
     @IBOutlet weak var bubble: UIView!
     
     //@IBOutlet weak var widthConstraint: NSLayoutConstraint!
-    //@IBOutlet weak var rightConstraint: NSLayoutConstraint!
-    //@IBOutlet weak var leftConstraint: NSLayoutConstraint!
+    @IBOutlet weak var rightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var leftConstraint: NSLayoutConstraint!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

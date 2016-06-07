@@ -16,7 +16,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nH8-Ok-xfW">
-                        <rect key="frame" x="62" y="8" width="196" height="73.5"/>
+                        <rect key="frame" x="18" y="8" width="196" height="73.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o2z-6s-TvQ">
                                 <rect key="frame" x="7" y="55" width="181" height="15"/>
@@ -66,15 +66,18 @@
                     </view>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="nH8-Ok-xfW" firstAttribute="leading" secondItem="8ud-zM-z7L" secondAttribute="leadingMargin" priority="750" constant="10" id="0Em-QS-dYH"/>
                     <constraint firstAttribute="topMargin" secondItem="nH8-Ok-xfW" secondAttribute="top" id="KsU-sv-n4B"/>
-                    <constraint firstItem="nH8-Ok-xfW" firstAttribute="centerX" secondItem="8ud-zM-z7L" secondAttribute="centerX" placeholder="YES" id="aJ8-dX-Yiv"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="nH8-Ok-xfW" secondAttribute="trailing" priority="250" constant="10" id="Pl2-xy-COG"/>
                     <constraint firstAttribute="bottomMargin" secondItem="nH8-Ok-xfW" secondAttribute="bottom" id="eTO-PX-pSQ"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="bubble" destination="nH8-Ok-xfW" id="BaP-Ft-MlE"/>
+                <outlet property="leftConstraint" destination="0Em-QS-dYH" id="hbm-TQ-xmS"/>
                 <outlet property="messageLable" destination="EZC-CG-lE6" id="BiQ-I6-7Cy"/>
                 <outlet property="nicknameLable" destination="lDV-3X-qqa" id="ayH-8z-2sy"/>
+                <outlet property="rightConstraint" destination="Pl2-xy-COG" id="pia-f3-BDp"/>
                 <outlet property="timeLable" destination="o2z-6s-TvQ" id="fnI-bK-aeu"/>
             </connections>
             <point key="canvasLocation" x="848" y="305"/>

@@ -75,7 +75,7 @@ class broadcastTableViewController: UIViewController, UITableViewDelegate, UITab
                 self.scrollToBottom()
             })
         }
-        
+        self.scrollToBottom()
     }
 
     override func didReceiveMemoryWarning() {
@@ -191,7 +191,7 @@ class broadcastTableViewController: UIViewController, UITableViewDelegate, UITab
         //local message --> align to right
         //if senderNickname == nickname {
         if (isLocal){
-            
+            /*
             let trailingContraint = NSLayoutConstraint(item: cell,
                                                        attribute: NSLayoutAttribute.Trailing,
                                                        relatedBy: NSLayoutRelation.Equal,
@@ -200,16 +200,16 @@ class broadcastTableViewController: UIViewController, UITableViewDelegate, UITab
                                                        multiplier: 1.0,
                                                        constant: 10)
             cell.addConstraint(trailingContraint)
- 
+    */
             
             //cell.rightConstraint.constant = 10
-             //cell.leftConstraint.priority = 10
-            
+            cell.leftConstraint.priority = 750
+            cell.rightConstraint.priority = 250
             cell.bubble.backgroundColor = UIColor.init(red: 40.0/255, green: 178.0/255, blue: 148.0/255, alpha: 1)
 
         }
         else{
-            
+            /*
             let leadingContraint = NSLayoutConstraint(item: cell.bubble,
                                                       attribute: NSLayoutAttribute.Leading,
                                                       relatedBy: NSLayoutRelation.Equal,
@@ -218,11 +218,12 @@ class broadcastTableViewController: UIViewController, UITableViewDelegate, UITab
                                                       multiplier: 1.0,
                                                       constant: 10)
             cell.addConstraint(leadingContraint)
-            
+            */
             //cell.removeConstraint(cell.rightConstraint)
             //cell.leftConstraint.constant = 10
             //cell.rightConstraint.constant = 50
-            //cell.rightConstraint.priority=10
+            cell.leftConstraint.priority = 250
+            cell.rightConstraint.priority = 750
             cell.bubble.backgroundColor = UIColor.init(red: 49.0/255, green: 189.0/255, blue: 199.0/255, alpha: 1.0)
             //
         }
@@ -235,7 +236,7 @@ class broadcastTableViewController: UIViewController, UITableViewDelegate, UITab
         //cell.lblMessageDetails.text = "by \(senderNickname.uppercaseString) @ \(messageDate)"
         
         //cell.lblChatMessage.textColor = UIColor.darkGrayColor()
-        
+        cell.setNeedsLayout()
         
         return cell
     }
@@ -303,7 +304,6 @@ class broadcastTableViewController: UIViewController, UITableViewDelegate, UITab
         message.setValue(mess, forKey: "message")
         message.setValue(dat, forKey: "dateTime")
         message.setValue(isLocal, forKey: "isLocal")
-        message.setValue("null", forKey: "room")
         
         do {
             try managedContext.save()

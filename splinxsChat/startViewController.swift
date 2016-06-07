@@ -44,7 +44,7 @@ class startViewController: UIViewController {
             let alertController = UIAlertController(title: "Attention", message:
                 "You are not connected, maybe the server is down. \n I try to reconnect now.", preferredStyle: UIAlertControllerStyle.Alert)
             alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default,handler: nil))
-            socketIOcontroller.sharedInstance.establishConnection()
+            
             self.presentViewController(alertController, animated: true, completion: nil)
             return
         }
@@ -60,7 +60,7 @@ class startViewController: UIViewController {
         else {
             //self.nickname = nicknameTextFiel.text
             
-            //self.performSegueWithIdentifier("goToUsers", sender: nicknameTextFiel.text)
+            self.performSegueWithIdentifier("goToUsers", sender: nicknameTextFiel.text)
         }
     }
     
@@ -82,10 +82,8 @@ class startViewController: UIViewController {
                 self.isConnected = isConnected
             })
         }
-
+        socketIOcontroller.sharedInstance.establishConnection()
     }
-    
-    
     
     
     /*

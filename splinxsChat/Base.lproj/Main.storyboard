@@ -36,7 +36,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eE9-Aa-YHk">
-                                <rect key="frame" x="147" y="211" width="307" height="178"/>
+                                <rect key="frame" x="147" y="164" width="307" height="178"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BKD-F8-9VU">
                                         <rect key="frame" x="20" y="55" width="84" height="30"/>
@@ -72,7 +72,6 @@
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="connectAction:" destination="D5t-O2-SIT" eventType="touchUpInside" id="qXh-Bl-ggs"/>
-                                            <segue destination="fYI-Ra-Omw" kind="show" identifier="goToUsers" id="QyZ-Q1-WY3"/>
                                         </connections>
                                     </button>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="jg1-hT-i9K">
@@ -119,7 +118,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="eE9-Aa-YHk" firstAttribute="centerY" secondItem="jwN-3P-Pnm" secondAttribute="centerY" id="4z3-5e-9VD"/>
+                            <constraint firstItem="eE9-Aa-YHk" firstAttribute="top" secondItem="f0f-yx-Aa3" secondAttribute="bottom" constant="100" id="HAh-Ve-JoA"/>
                             <constraint firstItem="eE9-Aa-YHk" firstAttribute="centerX" secondItem="jwN-3P-Pnm" secondAttribute="centerX" id="mz5-g4-KRG"/>
                         </constraints>
                     </view>
@@ -128,11 +127,12 @@
                     <connections>
                         <outlet property="ipSegmentedControl" destination="jg1-hT-i9K" id="1M0-J4-vJE"/>
                         <outlet property="nicknameTextFiel" destination="uj3-1F-3k3" id="Cyn-RK-dZW"/>
+                        <segue destination="fYI-Ra-Omw" kind="show" identifier="goToUsers" id="RaL-T5-XK5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sth-YD-lMX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-672" y="-144"/>
+            <point key="canvasLocation" x="-666" y="-163"/>
         </scene>
         <!--Splinxs Chat-->
         <scene sceneID="BRc-z3-ZjA">
