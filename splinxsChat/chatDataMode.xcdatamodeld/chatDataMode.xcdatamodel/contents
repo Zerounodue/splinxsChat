@@ -5,13 +5,9 @@
         <attribute name="isLocal" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="message" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="nickname" optional="YES" attributeType="String" syncable="YES"/>
-    </entity>
-    <entity name="Rooms" syncable="YES">
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="relationship" optional="YES" maxCount="1" deletionRule="Nullify" syncable="YES"/>
+        <attribute name="room" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Message" positionX="-63" positionY="-18" width="128" height="105"/>
-        <element name="Rooms" positionX="-63" positionY="9" width="128" height="75"/>
+        <element name="Message" positionX="-63" positionY="-18" width="128" height="118"/>
     </elements>
 </model>

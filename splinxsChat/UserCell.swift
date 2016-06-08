@@ -10,7 +10,6 @@ import UIKit
 
 class UserCell: BaseCell {
     @IBOutlet weak var nicknameLable: UILabel!
-    @IBOutlet weak var onlineDot: UIView!
     @IBOutlet weak var statusLable: UILabel!
     @IBOutlet weak var onlineStatusImage: UIImageView!
 

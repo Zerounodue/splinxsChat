@@ -24,9 +24,17 @@
                                     <constraint firstAttribute="height" constant="200" id="oee-Zi-IM6"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="by Elia Kocher" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="55c-Hv-XAv">
+                                <rect key="frame" x="255" y="387" width="90" height="17"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="55c-Hv-XAv" firstAttribute="top" secondItem="OXT-Qw-9lR" secondAttribute="bottom" constant="-13" id="3t0-bd-9dE"/>
+                            <constraint firstItem="55c-Hv-XAv" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="6xn-NG-DSW"/>
                             <constraint firstItem="OXT-Qw-9lR" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="PJa-zZ-hH4"/>
                             <constraint firstItem="OXT-Qw-9lR" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="iZ3-FB-ECX"/>
                         </constraints>

@@ -126,6 +126,13 @@ class usersTableViewController: UIViewController, UITableViewDelegate, UITableVi
                 let broadcastVC = segue.destinationViewController as! broadcastTableViewController
                 broadcastVC.nickname = nickname
             }
+            if identifier == "goToPrivate" {
+                let privateVC = segue.destinationViewController as! privateTableViewController
+                privateVC.nickname = nickname
+                let destinationNicknameLable = sender as! UILabel
+                
+                privateVC.destinationNickname = destinationNicknameLable.text
+            }
         }
     }
     
@@ -142,7 +149,7 @@ class usersTableViewController: UIViewController, UITableViewDelegate, UITableVi
         //priavteVC.nickname = nickname
         //var rootViewController = self.window!.rootViewController as UINavigationController
         if(currentCell.nicknameLable.text! == nickname){
-            let alertController = UIAlertController(title: "WTF", message:
+            let alertController = UIAlertController(title: "???????", message:
                 "You want to chat with yourself?", preferredStyle: UIAlertControllerStyle.Alert)
             alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default,handler: nil))
             
@@ -156,12 +163,16 @@ class usersTableViewController: UIViewController, UITableViewDelegate, UITableVi
             self.presentViewController(alertController, animated: true, completion: nil)
         }
         else{
+            /*
             let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let privateVC = mainStoryboard.instantiateViewControllerWithIdentifier("privateVC") as! privateTableViewController
             privateVC.nickname = nickname
             privateVC.destinationNickname=currentCell.nicknameLable.text!
             
             self.navigationController?.pushViewController(privateVC, animated: true)
+             */
+            
+            self.performSegueWithIdentifier("goToPrivate", sender: currentCell.nicknameLable)
         }
     }
     

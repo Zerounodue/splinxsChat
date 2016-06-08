@@ -304,6 +304,7 @@ class broadcastTableViewController: UIViewController, UITableViewDelegate, UITab
         message.setValue(mess, forKey: "message")
         message.setValue(dat, forKey: "dateTime")
         message.setValue(isLocal, forKey: "isLocal")
+        message.setValue("null", forKey: "room")
         
         do {
             try managedContext.save()
