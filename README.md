@@ -17,3 +17,4 @@ for remote server select "splinxs" in login screen, due to BFH firewall you must
 	- Private messages are not stored
 	- Due to Socket.io limitations, connection is interrupted in background
 	
+Tested with: iPhone 6S and iPhone 5s simulator
