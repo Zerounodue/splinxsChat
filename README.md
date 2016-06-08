@@ -2,7 +2,8 @@
 iOS chat based on SocketIO
 
 
-node.js server in splinxsChatServer folder
+node.js server is located in the splinxsChatServer folder
+
 run server: 
 ```sh
 $ node index.js
