@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class usersTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource  {
     
@@ -37,6 +38,15 @@ class usersTableViewController: UIViewController, UITableViewDelegate, UITableVi
                 }
             })
         })
+        
+        socketIOcontroller.sharedInstance.getChatMessage { (messageInfo) -> Void in
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+           
+                self.savePersistentMessage(messageInfo)
+                print ("lalal")
+
+            })
+        }
         
         //replace back arrow with logout text and add action
         self.navigationItem.hidesBackButton = true
@@ -190,6 +200,39 @@ class usersTableViewController: UIViewController, UITableViewDelegate, UITableVi
     }
  */
  
+    
+    
+    func savePersistentMessage(messageInfo: [String: AnyObject]) {
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        
+        let entity =  NSEntityDescription.entityForName("Message", inManagedObjectContext:managedContext)
+        let message = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
+        
+        let nick = messageInfo["nickname"] as! String
+        let mess = messageInfo["message"] as! String
+        let dat = messageInfo["date"] as! String
+        var isLocal:Bool
+        if ( messageInfo["nickname"] as! String == self.nickname){
+            isLocal=true
+        }
+        else{isLocal=false}
+        //let isLocal = messageInfo["nickname"] as! String ? "Online" : "Offline"
+        
+        message.setValue(nick, forKey: "nickname")
+        message.setValue(mess, forKey: "message")
+        message.setValue(dat, forKey: "dateTime")
+        message.setValue(isLocal, forKey: "isLocal")
+        message.setValue("null", forKey: "room")
+        
+        do {
+            try managedContext.save()
+            
+        } catch let error as NSError  {
+            print("Could not save \(error), \(error.userInfo)")
+        }
+    }
     
    
 }

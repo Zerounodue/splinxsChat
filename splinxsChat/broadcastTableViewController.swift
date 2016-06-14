@@ -25,7 +25,7 @@ class broadcastTableViewController: UIViewController, UITableViewDelegate, UITab
 
     var nickname: String!
     var persistentChatMessages = [NSManagedObject]()
-    var chatMessages = [[String: AnyObject]]()
+    //var chatMessages = [[String: AnyObject]]()
     
    
     
@@ -45,6 +45,21 @@ class broadcastTableViewController: UIViewController, UITableViewDelegate, UITab
         swipeGestureRecognizer.direction = UISwipeGestureRecognizerDirection.Down
         swipeGestureRecognizer.delegate = self
         view.addGestureRecognizer(swipeGestureRecognizer)
+        persistentChatMessages.removeAll()
+        loadPersistentMessages()
+        socketIOcontroller.sharedInstance.getChatMessage { (messageInfo) -> Void in
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                //add the new recived text in the chatMessages array
+                //self.chatMessages.append(messageInfo)
+                //
+                self.savePersistentMessage(messageInfo)
+     
+                
+                //reload the table in orde to display the new text
+                self.chatTableView.reloadData()
+                self.scrollToBottom()
+            })
+        }
         
         
     }
@@ -58,23 +73,13 @@ class broadcastTableViewController: UIViewController, UITableViewDelegate, UITab
         configureOtherUserActivityLabel()
         
         messageTextView.delegate = self
-        loadPersistentMessages()
+        
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        socketIOcontroller.sharedInstance.getChatMessage { (messageInfo) -> Void in
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                //add the new recived text in the chatMessages array
-                //self.chatMessages.append(messageInfo)
-                self.savePersistentMessage(messageInfo)
-                
-                //reload the table in orde to display the new text
-                self.chatTableView.reloadData()
-                self.scrollToBottom()
-            })
-        }
+        
         self.scrollToBottom()
     }
 
@@ -203,8 +208,8 @@ class broadcastTableViewController: UIViewController, UITableViewDelegate, UITab
     */
             
             //cell.rightConstraint.constant = 10
-            cell.leftConstraint.priority = 750
-            cell.rightConstraint.priority = 250
+            cell.leftConstraint.priority = 250
+            cell.rightConstraint.priority = 750
             cell.bubble.backgroundColor = UIColor.init(red: 40.0/255, green: 178.0/255, blue: 148.0/255, alpha: 1)
 
         }
@@ -222,8 +227,8 @@ class broadcastTableViewController: UIViewController, UITableViewDelegate, UITab
             //cell.removeConstraint(cell.rightConstraint)
             //cell.leftConstraint.constant = 10
             //cell.rightConstraint.constant = 50
-            cell.leftConstraint.priority = 250
-            cell.rightConstraint.priority = 750
+            cell.leftConstraint.priority = 750
+            cell.rightConstraint.priority = 250
             cell.bubble.backgroundColor = UIColor.init(red: 49.0/255, green: 189.0/255, blue: 199.0/255, alpha: 1.0)
             //
         }
@@ -307,12 +312,16 @@ class broadcastTableViewController: UIViewController, UITableViewDelegate, UITab
         message.setValue("null", forKey: "room")
         
         do {
-            try managedContext.save()
+            //dont save it, it's saved in userTableViewController
+            //try managedContext.save()
             persistentChatMessages.append(message)
-        } catch let error as NSError  {
+        } /*catch let error as NSError  {
             print("Could not save \(error), \(error.userInfo)")
         }
+ */
     }
+    
+
     
     func loadPersistentMessages(){
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -321,6 +330,7 @@ class broadcastTableViewController: UIViewController, UITableViewDelegate, UITab
         do {
             let results =
                 try managedContext.executeFetchRequest(fetchRequest)
+            
             persistentChatMessages = results as! [NSManagedObject]
         } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
